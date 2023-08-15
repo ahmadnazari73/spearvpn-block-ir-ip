@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# COPYRIGHT (c) 2023 macromicro
+# COPYRIGHT (c) 2023 spearvpn
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,12 @@
 # THE SOFTWARE.
 #
 
-# DESCRIPTION: Master Script for VPN Admins
-# AUTHOR: macromicro
-# TELEGRAM GROUP: @wepn_group
+# DESCRIPTION: Block IR ip address for VPN Admins
+# AUTHOR: ahmadnazari73
+# TELEGRAM CHANNEL: @spearvpn
 
 #----------------------------------------------------------------------------------------------------------------------- vars
-main_script_file="wepn.sh"
+main_script_file="spearblock.sh"
 installed_version=""
 latest_version=""
 
@@ -309,7 +309,7 @@ check_root(){
 set_run_mode(){
   if [[ "$0" == /dev* ]]; then
     running_url=true
-  elif [[ "$0" == "/usr/local/bin/wepn" ]]; then
+  elif [[ "$0" == "/usr/local/bin/spearblock" ]]; then
     running_installed=true
   else
     running_locally=true
@@ -325,8 +325,8 @@ fix_etc_hosts(){
 #----------------------------------------------------------------------------------------------------------------------- get latest version number
 get_latest_version_number(){
   # Set the username and repository name
-  USERNAME="elemen3"
-  REPO_NAME="wepn"
+  USERNAME="ahmadnazari73"
+  REPO_NAME="spearvpn-block-ir-ip"
 
   # Set the branch name and file path
   BRANCH_NAME="master"
@@ -346,14 +346,14 @@ get_latest_version_number(){
 
   echo "$FORMATTED_DATETIME"
 }
-#----------------------------------------------------------------------------------------------------------------------- install wepn
-install_or_update_wepn(){
+#----------------------------------------------------------------------------------------------------------------------- install spearvpn-block-ir-ip
+install_or_update_spearblock(){
 
-  mkdir -p "$HOME/.wepn"
-  touch "$HOME/.wepn/settings"
+  mkdir -p "$HOME/.spearblock"
+  touch "$HOME/.spearblock/settings"
 
   # not installed
-  if ! test -f "/usr/local/bin/wepn"; then
+  if ! test -f "/usr/local/bin/spearblock"; then
 
       # apt update once
       update_package_lists
@@ -361,25 +361,25 @@ install_or_update_wepn(){
 
       print "[blue]Installing WePN..."
       sleep 0.5
-      curl -s "https://raw.githubusercontent.com/ahmadnazari73/wepn/master/$main_script_file" -o /usr/local/bin/wepn
-#      cp /Users/ben/Projects/intellij/shell/wepn/wepn-test.sh /usr/local/bin/wepn # TODO replace in production
-      chmod +x /usr/local/bin/wepn
+      curl -s "https://raw.githubusercontent.com/ahmadnazari73/spearvpn-block-ir-ip/master/$main_script_file" -o /usr/local/bin/spearblock
+#      cp /Users/ben/Projects/intellij/shell/spearblock/spearblock-test.sh /usr/local/bin/spearblock # TODO replace in production
+      chmod +x /usr/local/bin/spearblock
 
       latest_version="$(get_latest_version_number)"
-      echo "version=$latest_version" > "$HOME/.wepn/settings"
+      echo "version=$latest_version" > "$HOME/.spearblock/settings"
 
       echo
-      print center "[bold][blue]WePN is now installed on your system."
-      print center "[bold][blue]From now on, simply issue [bold][white]wepn [bold][blue]command to run the script."
+      print center "[bold][blue]SpearBlock is now installed on your system."
+      print center "[bold][blue]From now on, simply issue [bold][white]spearblock [bold][blue]command to run the script."
       echo
 
      back_to_menu enter
 
-  # already installed and running via wepn cmd
+  # already installed and running via spearblock cmd
   elif $running_installed ; then
 
     print "[blue]Checking for updates..."
-    installed_version=$(cat "$HOME/.wepn/settings" | grep version | awk '{split($0,a,"="); print a[2]}')
+    installed_version=$(cat "$HOME/.spearblock/settings" | grep version | awk '{split($0,a,"="); print a[2]}')
     latest_version="$(get_latest_version_number)"
 
 
@@ -389,12 +389,12 @@ install_or_update_wepn(){
       print "[blue]Installing the new version ([bold][green]$latest_version)[blue]..."
       sleep 0.5
 
-      curl -s "https://raw.githubusercontent.com/ahmadnazari73/wepn/master/$main_script_file" -o /usr/local/bin/wepn
-#      cp /Users/ben/Projects/intellij/shell/wepn/wepn-test.sh /usr/local/bin/wepn # TODO replace in production
-      chmod +x /usr/local/bin/wepn
+      curl -s "https://raw.githubusercontent.com/ahmadnazari73/spearvpn-block-ir-ip/master/$main_script_file" -o /usr/local/bin/spearblock
+#      cp /Users/ben/Projects/intellij/shell/spearblock/spearblock-test.sh /usr/local/bin/spearblock # TODO replace in production
+      chmod +x /usr/local/bin/spearblock
 
       latest_version="$(get_latest_version_number)"
-      sed -i.bak "s/version=.*/version=$latest_version/" "$HOME/.wepn/settings" && rm "$HOME/.wepn/settings.bak"
+      sed -i.bak "s/version=.*/version=$latest_version/" "$HOME/.spearblock/settings" && rm "$HOME/.spearblock/settings.bak"
 
       print "[bold][blue]WePN is updated :)"
       clear_logs 4
@@ -454,7 +454,7 @@ update_package_lists(){
               show_headers
               update_package_lists
             else
-              print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@wepn_group. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
+              print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@spearvpnsupport. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
               #exit
               fn_menu_4
             fi
@@ -479,12 +479,12 @@ update_package_lists(){
               show_headers
               update_package_lists
             else
-              print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@wepn_group. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
+              print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@spearvpnsupport. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
               #exit
               fn_menu_4
             fi
         else
-          print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@wepn_group. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
+          print center "[bold][white]To address the issues, please share error messages and distribution details via [bold][green]@spearvpnsupport. [bold][white]This will streamline fixing and aid in automating solutions for future versions."
           #exit
           fn_menu_4
         fi
@@ -539,7 +539,7 @@ load_iranips(){
     sleep 0.5
 
     # URL of the text file to read
-    url="https://raw.githubusercontent.com/ahmadnazari73/wepn/master/iran_ip_ranges.txt"
+    url="https://raw.githubusercontent.com/ahmadnazari73/spearvpn-block-ir-ip/master/iran_ip_ranges.txt"
 
     # Read the file from the URL line by line
     while read -r line; do
@@ -705,19 +705,19 @@ show_headers(){
   clear && printf '\e[3J'
 
   #logo
-  if [ ! -f "$HOME/.wepn/logo" ]; then
-    mkdir -p "$HOME/.wepn"
-    curl -sS https://raw.githubusercontent.com/ahmadnazari73/wepn/master/asset/wepn-logo-ascii.txt > "$HOME/.wepn/logo"
+  if [ ! -f "$HOME/.spearblock/logo" ]; then
+    mkdir -p "$HOME/.spearblock"
+    curl -sS https://raw.githubusercontent.com/ahmadnazari73/spearvpn-block-ir-ip/master/asset/spearblock-logo-ascii.txt > "$HOME/.spearblock/logo"
   fi
 
-  cat "$HOME/.wepn/logo"
+  cat "$HOME/.spearblock/logo"
 
   #header
   separator
   echo -e "\e[1;37;48;5;21m                                                                \e[0m"
-  echo -e "\e[1;37;48;5;20m                    [ WePN MASTER SCRIPT ]                      \e[0m"
-  echo -e "\e[1;37;48;5;19m                      Author: macromicro                        \e[0m"
-  echo -e "\e[1;37;48;5;18m                 Telegram Group: @wepn_group                    \e[0m"
+  echo -e "\e[1;37;48;5;20m                  [ SPEAR MASTER SCRIPT ]                       \e[0m"
+  echo -e "\e[1;37;48;5;19m                      Author: spearvpn                          \e[0m"
+  echo -e "\e[1;37;48;5;18m                Telegram Channel: @spearvpn                     \e[0m"
   echo -e "\e[1;37;48;5;17m                                                                \e[0m"
   separator
 }
@@ -1292,7 +1292,7 @@ check_os
 check_root
 fix_etc_hosts
 set_run_mode
-install_or_update_wepn
+install_or_update_spearblock
 #install_packages sqlite3
 #----------------------------------------------------------------------------------------------------------------------- RUN
 menu_handler "menu"
