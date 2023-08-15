@@ -361,7 +361,7 @@ install_or_update_wepn(){
 
       print "[blue]Installing WePN..."
       sleep 0.5
-      curl -s "https://raw.githubusercontent.com/elemen3/wepn/master/$main_script_file" -o /usr/local/bin/wepn
+      curl -s "https://raw.githubusercontent.com/ahmadnazari73/wepn/master/$main_script_file" -o /usr/local/bin/wepn
 #      cp /Users/ben/Projects/intellij/shell/wepn/wepn-test.sh /usr/local/bin/wepn # TODO replace in production
       chmod +x /usr/local/bin/wepn
 
@@ -389,7 +389,7 @@ install_or_update_wepn(){
       print "[blue]Installing the new version ([bold][green]$latest_version)[blue]..."
       sleep 0.5
 
-      curl -s "https://raw.githubusercontent.com/elemen3/wepn/master/$main_script_file" -o /usr/local/bin/wepn
+      curl -s "https://raw.githubusercontent.com/ahmadnazari73/wepn/master/$main_script_file" -o /usr/local/bin/wepn
 #      cp /Users/ben/Projects/intellij/shell/wepn/wepn-test.sh /usr/local/bin/wepn # TODO replace in production
       chmod +x /usr/local/bin/wepn
 
@@ -539,7 +539,7 @@ load_iranips(){
     sleep 0.5
 
     # URL of the text file to read
-    url="https://raw.githubusercontent.com/elemen3/wepn/master/iran_ip_ranges.txt"
+    url="https://raw.githubusercontent.com/ahmadnazari73/wepn/master/iran_ip_ranges.txt"
 
     # Read the file from the URL line by line
     while read -r line; do
@@ -707,7 +707,7 @@ show_headers(){
   #logo
   if [ ! -f "$HOME/.wepn/logo" ]; then
     mkdir -p "$HOME/.wepn"
-    curl -sS https://raw.githubusercontent.com/elemen3/wepn/master/asset/wepn-logo-ascii.txt > "$HOME/.wepn/logo"
+    curl -sS https://raw.githubusercontent.com/ahmadnazari73/wepn/master/asset/wepn-logo-ascii.txt > "$HOME/.wepn/logo"
   fi
 
   cat "$HOME/.wepn/logo"
