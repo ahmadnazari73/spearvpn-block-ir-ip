@@ -714,11 +714,11 @@ show_headers(){
 
   #header
   separator
-  echo -e "\e[0;30;48;3;17m                                                                \e[0m"
-  echo -e "\e[0;30;48;3;17m                  [ SPEAR MASTER SCRIPT ]                       \e[0m"
-  echo -e "\e[0;30;48;3;17m                      Author: spearvpn                          \e[0m"
-  echo -e "\e[0;30;48;3;17m                Telegram Channel: @spearvpn                     \e[0m"
-  echo -e "\e[0;30;48;3;17m                                                                \e[0m"
+  echo -e "\e[0;30;48;5;18m                                                                \e[0m"
+  echo -e "\e[0;30;48;5;18m                  [ SPEAR MASTER SCRIPT ]                       \e[0m"
+  echo -e "\e[0;30;48;5;18m                      Author: spearvpn                          \e[0m"
+  echo -e "\e[0;30;48;5;18m                Telegram Channel: @spearvpn                     \e[0m"
+  echo -e "\e[0;30;48;5;18m                                                                \e[0m"
   separator
 }
 #----------------------------------------------------------------------------------------------------------------------- menu functions
